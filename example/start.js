@@ -5,7 +5,6 @@ app.use(express.json());
 
 const port = process.env.PORT || 3000;
 
-
 //get request
 const courses = [
     { id: 1, name: "course-1" },
@@ -61,8 +60,6 @@ app.post('/api/courses', (req, res) => {
     courses.push(newCourse);
     res.send({ newCourse, length: courses.length });
 });
-
-
 
 app.listen(port, () => {
     console.log(`listening on port ${port}`);

@@ -56,7 +56,7 @@ app.put('/api/courses/:id', (req, res) => {
     // If it is valid we should update the course 
     course.name = req.body.name;
     course.author = req.body.author;
-    
+
     // Then return updated course to client
     res.send(course);
 });
