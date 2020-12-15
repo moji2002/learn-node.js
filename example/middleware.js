@@ -7,7 +7,7 @@ const app = express();
 // simple custom middleware function 
 app.use((req, res, next) => {
     console.log('logging...');
-    next(); // pass the controll to the next middle ware function
+    next(); // pass the controll to the next middleware function
 });
 
 // middleware function calls in sequence
@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 });
 
 // express.urlencoded({extended:true}) return a middleware that parses incoming request with url encoded payload
-// express.static() return a middle ware to serve static files 
+// express.static() return a middleware to serve static files 
 app.use(express.static('public'))
 
 // Third party middlewares =>
