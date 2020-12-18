@@ -1,5 +1,5 @@
 const log = (req, res, next) => {
-    console.log('logging...');
+    // console.log('logger:' , req.body);
     next(); // pass the control to the next middleware function
 };
 

@@ -24,11 +24,12 @@ app.get('/', (req, res) => {
 
 // express.urlencoded({extended:true}) return a middleware that parses incoming request with url encoded payload
 // express.static() return a middleware to serve static files 
-app.use(express.static('public'))
+app.use(express.static('public'));
 
 // Third party middlewares =>
-// Helment for security
+// Helmet for security
 // Morgan for logging
+// debug for debugging
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {

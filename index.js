@@ -2,6 +2,13 @@ const express = require('express');
 const logger = require('./middlewares/logger');
 const app = express();
 const bodyParser = express.json();
+const mongoose = require('mongoose');
+mongoose.connect("mongodb://localhost:27017", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true
+});
 
 const home = require('./routes/home');
 const genres = require('./routes/genres');
@@ -12,7 +19,7 @@ app.use(bodyParser);
 // use custom middleware
 app.use(logger);
 
-// middle ware to serve public files
+// middleware to serve public files
 app.use(express.static('public'));
 
 // Routes
