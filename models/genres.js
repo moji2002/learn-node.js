@@ -8,11 +8,12 @@ const genresSchema = mongoose.Schema({
         maxLength: 50,
         unique: true,
     },
-    time: {
+    date: {
         type: Date,
-        required: true,
         default: Date.now()
-    }
+    },
+    tags: [String], // array of strings
+    isPublished: Boolean
 });
-
-module.exports = new mongoose.model('genres', genresSchema);
+// first argument shoud be singular
+module.exports = new mongoose.model('Genre', genresSchema);

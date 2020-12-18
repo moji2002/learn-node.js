@@ -8,10 +8,12 @@ mongoose.connect("mongodb://localhost:27017/myapp", {
     useUnifiedTopology: true,
     useFindAndModify: false,
     useCreateIndex: true
-});
+}).then(() => console.log('connected to db'))
+    .catch(err => console.log('could not connect to MongoDB'));
 
 const home = require('./routes/home');
 const genres = require('./routes/genres');
+const log = require('./middlewares/logger');
 // use "config" npm module to manage configuration in different env
 // use "debug" npm module to manage debug logs
 

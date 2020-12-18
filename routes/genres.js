@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const log = require('../middlewares/logger');
+// models should be in Pascal naming convention
 const Genres = require('../models/genres');
 
 const genres = [
@@ -35,7 +36,7 @@ router.post('/', async (req, res) => {
         const newGenre = await Genres.create({ name });
         res.send({ result: newGenre, msg: "hey" });
     } catch (error) {
-        res.send({ result: error, msg: "hey" });
+        res.status(400).send({ result: error, msg: "hey" });
     }
 
 });
