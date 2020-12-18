@@ -3,7 +3,7 @@ const logger = require('./middlewares/logger');
 const app = express();
 const bodyParser = express.json();
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost:27017", {
+mongoose.connect("mongodb://localhost:27017/myapp", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
