@@ -30,13 +30,12 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    const { name } = req.body;
-
+    const { name, category, isPublished } = req.body;
     try {
-        const newGenre = await Genres.create({ name });
+        const newGenre = await Genres.create({ name, category, isPublished });
         res.send({ result: newGenre, msg: "hey" });
     } catch (error) {
-        res.status(400).send({ result: error, msg: "hey" });
+        res.status(400).send({ result: error.message });
     }
 
 });
