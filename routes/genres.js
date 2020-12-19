@@ -43,6 +43,30 @@ router.get("/:id", async (req, res) => {
   // /john$/i append an (i) to the end to make it case insensitive
   // /.*john.*/i contains john
 
+  // ==================================
+  // Updating a Document
+
+  // Approach: Query First
+  // findById()
+  // Modify its properties
+  // save()
+
+  const course = await course.findById(id);
+  if (!course) return;
+  course.isPublished = true;
+  course.author = "another author";
+  //or use set method
+  course.set({
+    isPublished: true,
+    author: "another",
+  });
+
+  course.save();
+
+  // Approach : Update first
+  // Update directly
+  // Optionally: get the updated document
+
   const genres = await Genres
     // .find({author:"john"})
     // .find({ price: { $gt: 10 } }) // find all documents that their price is higher than 10
@@ -55,6 +79,7 @@ router.get("/:id", async (req, res) => {
     // .skip((pageNumber - 1) * pageSize) // use this method for pagination
     // .limit(pageSize)
     // .sort({ name: 1 })
+    // .sort({ name: -1 })
     // .select({ name: 1, tags: 1 })
     // .sort("name") another aproach
     // .sort("-name") another aproach
