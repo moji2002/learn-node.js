@@ -11,6 +11,7 @@ mongoose.connect("mongodb://localhost:27017/myapp", {
 }).then(() => console.log('connected to db'))
     .catch(err => console.log('could not connect to MongoDB'));
 
+
 const home = require('./routes/home');
 const genres = require('./routes/genres');
 const log = require('./middlewares/logger');
