@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const log = require("../middlewares/logger");
 // models should be in Pascal naming convention
-const Genres = require("../models/genres");
+const Genre = require("../models/genre");
 
 const genres = [
   { id: 1, name: "comedy" },
@@ -18,7 +18,7 @@ const genres = [
 // });
 
 router.get("/", async (req, res) => {
-  const result = await Genres.find();
+  const result = await Genre.find();
 
   res.send({ result });
 });
@@ -96,7 +96,7 @@ router.get("/:id", async (req, res) => {
   const result = Course.deleteMany({ isPublished });
   const course = Course.findByIdAndRemove(id);
 
-  const genres = await Genres
+  const genres = await Genre
     // .find({author:"john"})
     // .find({ price: { $gt: 10 } }) // find all documents that their price is higher than 10
     // .find({ price: { $in: [10, 20, 15] } }) // find all documents that their price 10,20,15
@@ -120,7 +120,7 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   const { name, category, isPublished } = req.body;
   try {
-    const newGenre = await Genres.create({ name, category, isPublished });
+    const newGenre = await Genre.create({ name, category, isPublished });
     res.send({ result: newGenre, msg: "hey" });
   } catch (error) {
     res.status(400).send({ result: error.message });
