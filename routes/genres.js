@@ -4,13 +4,6 @@ const log = require("../middlewares/logger");
 // models should be in Pascal naming convention
 const Genre = require("../models/genre");
 
-const genres = [
-  { id: 1, name: "comedy" },
-  { id: 2, name: "family" },
-  { id: 3, name: "horor" },
-  { id: 4, name: "documentry" },
-];
-
 // middleware that is specific to this router
 // router.use((req, res, next) => {
 //     console.log('middleware', "time:", Date.now());
@@ -88,7 +81,6 @@ router.get("/:id", async (req, res) => {
       isPublished: true
     }
   });
-
 
   // ==================================
   // remove a Document
