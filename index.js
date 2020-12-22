@@ -13,7 +13,8 @@ mongoose.connect("mongodb://localhost:27017/myapp", {
 
 
 const home = require('./routes/home');
-const genres = require('./routes/genres');
+// const genres = require('./routes/genres');
+const auth = require('./routes/auth');
 const log = require('./middlewares/logger');
 // use "config" npm module to manage configuration in different env
 // use "debug" npm module to manage debug logs
@@ -27,7 +28,8 @@ app.use(express.static('public'));
 
 // Routes
 app.use('/', home);
-app.use('/api/genres', genres);
+// app.use('/api/genres', genres);
+app.use('/api/auth', auth);
 
 // get env
 const env = app.get('env');
