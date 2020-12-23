@@ -2,7 +2,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
 
-const jwtPrivateKey = "your-256-bit-secret"; // should be stored in env variable
+const jwtPrivateKey = "your-256-bit-secret"; //FIXME: should be stored in env variable
 
 router.post('/', (req, res) => {
     const token = jwt.sign({ name: req.body.name, id: "65489765" }, jwtPrivateKey);
