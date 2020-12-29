@@ -12,11 +12,13 @@ const Genre = require("../models/genre");
 
 router.get("/", async (req, res) => {
   const result = await Genre.find();
+  
 
   res.send({ result });
 });
 
 router.get("/:id", async (req, res) => {
+  
   // Comparison Query Operators
   // eq (equal)
   // ne (not equal)
@@ -60,7 +62,7 @@ router.get("/:id", async (req, res) => {
   // Update directly
   // Optionally: get the updated document
   // first arqument is query selector and the secound is update object
-  const course = await course.update({ _id: id });
+  // const course = await course.update({ _id: id });
   // we can use some generic property to update multiple document in on go 
   const result = await course.update({ isPublished: false }, {
     // search for mongodb update operators
@@ -71,7 +73,7 @@ router.get("/:id", async (req, res) => {
       isPublished: false
     }
   });
-
+/*
   const course = await course.findByIdAndUpdate(id, {
     // we be return the document before the update operation
     // if you pass { new:true } as third argument you will get the updated document
@@ -81,13 +83,14 @@ router.get("/:id", async (req, res) => {
       isPublished: true
     }
   });
-
+*/
   // ==================================
   // remove a Document
+  /*
   const result = Course.deleteOne({ _id });
   const result = Course.deleteMany({ isPublished });
   const course = Course.findByIdAndRemove(id);
-
+*/
   const genres = await Genre
     // .find({author:"john"})
     // .find({ price: { $gt: 10 } }) // find all documents that their price is higher than 10
