@@ -2,7 +2,7 @@ const multer = require('multer');
 
 const megaByte = mb => mb * 1000000;
 const uploadImage = multer({
-    dest: 'images',
+    // dest: 'images', // if you want to access the file in the req object remove dest
     limits: {
         fileSize: megaByte(2)
     },
@@ -16,13 +16,14 @@ const uploadImage = multer({
         // const isTypeValid = validTypes.find(type => type === file.mimetype);
 
         // filter using regex
+        if (!file) return callback(new Error("You must provided a JPG or PNG"));
         const validTypes = /(jpg|png|image\/png|image\/jpeg)/;
         const isTypeValid = validTypes.test(file.mimetype);
-        if (!isTypeValid) callback(new Error("File must be a JPG or PNG"));
+        if (!isTypeValid) return callback(new Error("File must be a JPG or PNG"));
 
         return callback(null, true);
     }
 });
 
 
-module.exports = uploadImage;
+module.exports = uploadImage.single("upload");
