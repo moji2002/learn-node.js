@@ -12,7 +12,7 @@ router.get("/me", auth, async (req, res) => {
   });
 
 router.get('/', (req, res) => {
-    res.send('hello world');
+    res.send({ message: 'hello world' });
 });
 
 module.exports = router;
